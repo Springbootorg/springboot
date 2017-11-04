@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8"/>
+<title>teacher</title>
+</head>
+<body>
+
+            <form th:action="@{/teacher/add}" th:object="${teacher}" method="post">
+                <p >Please Fill Details To Register</p>
+                <input type="hidden" th:field="*{id}"/>
+                 fisrt name:<input type="text"  th:field="*{name}" /><br/>
+                 last name :<input type="text"  th:field="*{last_name}" /><br/>
+                 email     :<input type="email"  th:field="*{email}"/><br/>
+                 degree :<input type="text" th:field="*{degree}"/><br/>
+                  number :<input type="number" th:field="*{number}"/><br/>
+                <button type="submit" >submit</button> 
+            </form>
+    <table border="1">
+    <thead>
+    <td>ID</td>
+    <td>first name</td>
+    <td>last name</td>
+    <td>degree</td>
+    <td>number</td>
+    <td>email</td>
+     <td colspan="2">action</td>
+    </thead>
+    
+    <tr th:each="member : ${teachers}">
+    <td th:text="${member.id}"></td>
+    <td th:text="${member.name}"></td>
+    <td th:text="${member.last_name}"></td>
+    <td th:text="${member.degree}"></td>
+    <td th:text="${member.number}"></td>
+    <td th:text="${member.email}"></td>
+     <td><a th:href="@{'/teacher/edit/'+${member.id}}">Edit</a></td>
+    <td><a th:href="@{'/teacher/delete/'+${member.id}}">Delete</a></td>
+    
+    </tr>
+    </table>
+    
+    
+</body>
+</html>

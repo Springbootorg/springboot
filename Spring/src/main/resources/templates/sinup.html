@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+     <meta charset="UTF-8" />
+    <title>new member</title> 
+</head>
+<body>
+
+            <form th:action="@{/member/add}" th:object="${member}" method="post">
+                <p >Please Fill Details To Register</p>
+                 fisrt name:<input type="text"  th:field="*{first_name}" /><br/>
+                 last name :<input type="text"  th:field="*{last_name}" /><br/>
+                 username  :<input type="text"   th:field="*{username}"/><br/>
+                 email     :<input type="email"  th:field="*{email}"/><br/>
+                 password  :<input type="password" th:field="*{password}"/><br/>
+                 rePassword:<input type="password"  /><br/>
+                <button type="submit" >submit</button> 
+            </form>
+    <table border="1">
+    <thead>
+    <td>ID</td>
+    <td>first name</td>
+    <td>last name</td>
+    <td>username</td>
+    <td>email</td>
+    <td>password</td> 
+    </thead>
+    
+    <tr th:each="member : ${members}">
+    <td th:text="${member.id}"></td>
+    <td th:text="${member.first_name}"></td>
+    <td th:text="${member.last_name}"></td>
+    <td th:text="${member.username}"></td>
+    <td th:text="${member.email}"></td>
+    <td th:text="${member.password}"></td>
+    
+    </tr>
+    </table>
+    
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8"/>
+<title>University</title>
+</head>
+<body>
+
+
+            <form th:action="@{/university}" th:object="${uni}" method="post">
+                <p >Please Fill Details To Register</p>
+                <input type="hidden" th:field="*{id}"/>
+                 university name:<input type="text"  th:field="*{name}" /><br/>
+                  province name:<input type="text"  th:field="*{province}" /><br/>
+                <button type="submit" >submit</button> 
+            </form>
+            
+  <table border="1">
+    <thead>
+    <td>ID</td>
+    <td>name</td>
+    <td>province</td>
+    <td colspan="2">action</td>
+     
+    </thead>
+    
+    <tr th:each="member : ${universities}">
+    <td th:text="${member.id}"></td>
+    <td th:text="${member.name}"></td>
+    <td th:text="${member.province}"></td>
+    <td><a th:href="@{'/member/edit/'+${member.id}}">Edit</a></td>
+    <td><a th:href="@{'/member/delete/'+${member.id}}">Delete</a></td>
+    </tr>
+    </table>
+</body>
+</html>
